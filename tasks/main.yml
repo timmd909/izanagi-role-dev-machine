@@ -2,9 +2,23 @@
 
 - include: virtualization.yml
   sudo: yes
+  when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64'
 
 - include: utilities.yml
   sudo: yes
 
+- include: google-chrome.yml
+  sudo: yes
+  when: ansible_distribution == 'Ubuntu'
+
+- include: java.yml
+  sudo: yes
+  when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64'
+
+- include: selenium.yml
+  sudo: yes
+  when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64' and ansible_distribution_version == '16.04'
+
 - include: atom.yml
   sudo: yes
+  when: ansible_distribution == 'Ubuntu'

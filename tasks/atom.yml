@@ -1,0 +1,6 @@
+- name: Install Atom PPA
+  apt_repository:
+    repo: ppa:webupd8team/atom
+
+- name: Install Atom
+  apt: name=atom state=latest

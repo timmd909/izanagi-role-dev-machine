@@ -1,0 +1,10 @@
+---
+
+- include: virtualization.yml
+  sudo: yes
+
+- include: utilities.yml
+  sudo: yes
+
+- include: atom.yml
+  sudo: yes

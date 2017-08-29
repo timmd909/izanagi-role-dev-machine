@@ -1,0 +1,22 @@
+#
+# Ansible - Installs latest
+#
+- name: Install Ansible PPA
+  apt_repository:
+    repo: ppa:ansible/ansible
+
+- name: Install Ansible
+  apt: name=ansible state=latest
+
+#
+# Vagrant - only install on 16.04 x64 boxen
+#
+- name: Download latest Vagrant
+  get_url:
+    url: "https://releases.hashicorp.com/vagrant/{{vagrant_version}}/vagrant_{{vagrant_version}}_{{ansible_architecture}}.deb"
+    dest: '{{ vagrant_deb_path }}'
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+
+- name: Install Vagrant
+  apt: deb="{{ vagrant_deb_path }}"
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'

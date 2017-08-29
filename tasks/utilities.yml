@@ -1,0 +1,6 @@
+---
+
+- name: Install helpful utilities
+  apt: "name={{ item }}"
+  with_items:
+    - nmap

@@ -19,6 +19,9 @@
   sudo: yes
   when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64' and ansible_distribution_version == '16.04'
 
+- include: php.yml
+  sudo: yes
+
 - include: atom.yml
   sudo: yes
   when: ansible_distribution == 'Ubuntu'

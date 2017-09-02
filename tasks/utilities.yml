@@ -6,6 +6,8 @@
     - nmap
     - xvfb
     - kdiff3 
+    - synaptic
+    - gkrellm
 
 - name: Install fonts
   apt: name="{{ item }}" state=latest

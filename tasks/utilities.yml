@@ -8,6 +8,7 @@
     - kdiff3 
     - synaptic
     - gkrellm
+    - cloc
 
 - name: Install fonts
   apt: name="{{ item }}" state=latest

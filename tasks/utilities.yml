@@ -3,12 +3,14 @@
 - name: Install helpful utilities
   apt: name="{{ item }}" state=present
   with_items:
-    - nmap
-    - xvfb
-    - kdiff3 
-    - synaptic
-    - gkrellm
+    - bison
     - cloc
+    - flex
+    - gkrellm
+    - kdiff3
+    - nmap
+    - synaptic
+    - xvfb
 
 - name: Install fonts
   apt: name="{{ item }}" state=latest

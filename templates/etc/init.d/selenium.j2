@@ -26,7 +26,7 @@ function startSelenium()
       --user {{ selenium_user }} --chuid {{ selenium_user }} \
       --pidfile $XVFB_PID_FILE --make-pidfile \
       --exec "/usr/bin/Xvfb" \
-      -- :99 -ac -screen 0 1024x768x8
+      -- :99 -ac -screen 0 1024x1080x24
   fi
 
   if [ -f $SELENIUM_PID_FILE ]; then

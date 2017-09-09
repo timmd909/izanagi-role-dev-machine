@@ -12,6 +12,14 @@
     - synaptic
     - xvfb
 
+- name: Install Git related tools
+  apt: name="{{ item }}" state=present
+  with_items:
+    - giggle
+    - git
+    - git-cola
+    - gitg
+
 - name: Install fonts
   apt: name="{{ item }}" state=latest
   with_items:

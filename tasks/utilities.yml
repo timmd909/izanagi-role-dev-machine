@@ -6,10 +6,8 @@
     - bison
     - cloc
     - flex
-    - gkrellm
     - kdiff3
     - nmap
-    - synaptic
     - xvfb
 
 - name: Install Git related tools

@@ -20,10 +20,3 @@
 - name: Install Vagrant
   apt: deb="{{ vagrant_deb_path }}"
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04' and ansible_architecture == 'x86_64'
-
-#
-# Install Vagrant - Only install in Ubuntu with x64 support
-#
-- name: Install Virtualbox
-  apt: name=virtualbox state=latest
-  when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64'

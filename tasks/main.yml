@@ -1,6 +1,6 @@
 ---
 
-- include: virtualization.yml
+- include: automation.yml
   sudo: yes
   when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64'
 

@@ -2,26 +2,26 @@
 
 - include: automation.yml
   become: yes
-  become_user: root 
+  become_user: root
   when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64'
 
 - include: utilities.yml
-  become: yes 
-  become_user: root 
+  become: yes
+  become_user: root
 
 - include: google-chrome.yml
   become: yes
-  become_user: root 
+  become_user: root
   when: ansible_distribution == 'Ubuntu'
 
 - include: java.yml
   become: yes
-  become_user: root 
+  become_user: root
   when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64'
 
 - include: selenium.yml
   become: yes
-  become_user: root 
+  become_user: root
   when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64' and ansible_distribution_version == '16.04'
 
 - include: php.yml

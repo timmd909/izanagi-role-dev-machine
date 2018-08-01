@@ -1,6 +1,10 @@
 #
 # Ansible - Installs latest
 #
+- name: Install Ansible PPA
+  apt_repository:
+    repo: ppa:ansible/ansible
+
 - name: Install Ansible
   apt: name=ansible state=latest
 

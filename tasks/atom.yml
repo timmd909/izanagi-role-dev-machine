@@ -1,6 +1,15 @@
-- name: Install Atom PPA
+- name: Install Atom PPA (Linux Mint)
   apt_repository:
     repo: ppa:webupd8team/atom
+    state: present
+    codename: bionic
+  when: ansible_distribution == 'Linux Mint' and ansible_distribution_version == '19'
+
+- name: Install Atom PPA (Ubuntu)
+  apt_repository:
+    repo: ppa:webupd8team/atom
+    state: present
+  when: ansible_distribution == 'Ubuntu'
 
 - name: Install Atom
-  apt: name=atom state=latest
+  apt: name=atom state=latest update_cache=yes

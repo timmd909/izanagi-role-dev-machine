@@ -1,9 +1,13 @@
 ---
 
+- include: atom.yml
+  become: yes
+  become_user: root
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Linux Mint'
+
 - include: automation.yml
   become: yes
   become_user: root
-  when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64'
 
 - include: utilities.yml
   become: yes
@@ -28,7 +32,4 @@
   become: yes
   become_user: root
 
-- include: atom.yml
-  become: yes
-  become_user: root
-  when: ansible_distribution == 'Ubuntu'
+

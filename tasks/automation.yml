@@ -1,9 +1,16 @@
 #
 # Ansible - Installs latest
 #
-- name: Install Ansible PPA
+- name: Install Ansible PPA (Linux Mint)
   apt_repository:
     repo: ppa:ansible/ansible
+    codename: bionic
+  when: ansible_distribution == 'Linux Mint' and ansible_distribution_version == '19'
+
+- name: Install Ansible PPA (Ubuntu)
+  apt_repository:
+    repo: ppa:ansible/ansible
+  when: ansible_distribution == 'Ubuntu'
 
 - name: Install Ansible
   apt: name=ansible state=latest

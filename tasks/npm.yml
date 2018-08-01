@@ -10,3 +10,6 @@
     - nodejs-doc
     - npm
   when: ansible_distribution == 'Linux Mint'
+
+- name: Install Grunt CLI
+  apt: name=node-grunt-cli state=latest

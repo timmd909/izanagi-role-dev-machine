@@ -3,12 +3,18 @@
 - name: Install PHP dev package
   apt: name=php-dev state=latest
 
+#
+# Ubuntu 16.04 specific
+#
+
 - name: Remove Ubuntu's outdated xdebug
   apt: name=php-xdebug state=absent
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
 
 - name: Install latest XDebug from PECL
   pear: name=pecl/xdebug state=present
   when: ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
 
 # phpenmod/phpdismod need this file to exist
 - name: Install PHP xdebug.ini
@@ -16,4 +22,4 @@
     create: yes
     line: "zend_extension=xdebug.so"
     path: /etc/php/7.0/mods-available/xdebug.ini
-  when: ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'

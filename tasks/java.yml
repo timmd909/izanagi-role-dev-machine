@@ -1,14 +1,17 @@
 ---
 
-- name: "Java : Install PPA"
+- name: "Java : Install PPA (Ubuntu)"
   apt_repository: repo=ppa:webupd8team/java
+  when: ansible_distribution == "Ubuntu"
 
 # https://coderwall.com/p/zzdapg/ansible-recipe-to-install-java-7-selecting-the-oracle-license
 - name: Automatically select the Oracle License
   debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+  when: ansible_distribution == 'Ubuntu'
 
 - name: "Install Oracle Java"
   apt: name={{ item }} state=latest update_cache=yes
   with_items:
     - oracle-java8-installer
     - oracle-java8-set-default
+  when: ansible_distribution == 'Ubuntu'

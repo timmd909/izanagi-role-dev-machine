@@ -1,0 +1,12 @@
+---
+
+- name: "Install NodeJS (Mint)"
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - nodejs
+    - nodejs-dev
+    - nodejs-doc
+    - npm
+  when: ansible_distribution == 'Linux Mint'

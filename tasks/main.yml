@@ -32,4 +32,6 @@
   become: yes
   become_user: root
 
-
+- include: npm.yml
+  become: yes
+  become_user: root

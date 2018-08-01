@@ -16,7 +16,7 @@
   apt: name=ansible state=latest
 
 #
-# Vagrant - only install on 16.04 x64 boxen
+# Vagrant - only install on Ubuntu 16.04 x64 boxen
 #
 - name: Download latest Vagrant
   get_url:

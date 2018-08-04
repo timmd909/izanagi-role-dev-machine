@@ -23,3 +23,6 @@
     line: "zend_extension=xdebug.so"
     path: /etc/php/7.0/mods-available/xdebug.ini
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+
+- name: php-phpdbg
+  apt: name=php-phpdbg state=latest

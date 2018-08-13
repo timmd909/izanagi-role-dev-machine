@@ -21,7 +21,7 @@
 - include: java.yml
   become: yes
   become_user: root
-  when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64'
+  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Linux Mint'
 
 - include: selenium.yml
   become: yes

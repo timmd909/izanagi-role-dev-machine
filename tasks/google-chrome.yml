@@ -4,7 +4,6 @@
   shell: wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
   args:
     warn: no
-  when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64'
 
 - name: Add Google Chrome Repository
   lineinfile:
@@ -13,7 +12,6 @@
     regexp: ^deb.*
     line: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
     state: present
-  when: ansible_distribution == 'Ubuntu' and ansible_architecture == 'x86_64'
 
 - name: Install Google Chrome
   apt: name=google-chrome-stable state=latest update_cache=yes

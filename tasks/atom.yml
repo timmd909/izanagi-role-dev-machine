@@ -5,11 +5,12 @@
     codename: bionic
   when: ansible_distribution == 'Linux Mint' and ansible_distribution_version == '19'
 
-- name: Install Atom PPA (Ubuntu)
+- name: Install Atom PPA (Ubuntu 16.04)
   apt_repository:
     repo: ppa:webupd8team/atom
     state: present
-  when: ansible_distribution == 'Ubuntu'
+    update_cache: yes
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
 
 - name: Install Atom
-  apt: name=atom state=latest update_cache=yes
+  apt: name=atom state=latest

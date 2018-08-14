@@ -1,5 +1,5 @@
 #
-# Ansible - Installs latest
+# Ansible
 #
 - name: Install Ansible PPA (Linux Mint)
   apt_repository:
@@ -7,23 +7,27 @@
     codename: bionic
   when: ansible_distribution == 'Linux Mint' and ansible_distribution_version == '19'
 
-- name: Install Ansible PPA (Ubuntu)
+- name: Install Ansible PPA (Ubuntu 16.04)
   apt_repository:
     repo: ppa:ansible/ansible
-  when: ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
 
 - name: Install Ansible
   apt: name=ansible state=latest
 
 #
-# Vagrant - only install on Ubuntu 16.04 x64 boxen
+# Vagrant
 #
-- name: Download latest Vagrant
+- name: Download latest Vagrant (Ubuntu 16.04)
   get_url:
     url: "https://releases.hashicorp.com/vagrant/{{vagrant_version}}/vagrant_{{vagrant_version}}_{{ansible_architecture}}.deb"
     dest: '{{ vagrant_deb_path }}'
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04' and ansible_architecture == 'x86_64'
 
-- name: Install Vagrant
+- name: Install Vagrant (Ubuntu 16.04)
   apt: deb="{{ vagrant_deb_path }}"
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04' and ansible_architecture == 'x86_64'
+
+- name: Install Vagrant (Ubuntu 18.04)
+  apt: name=vagrant state=latest
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'

@@ -12,5 +12,12 @@
     update_cache: yes
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
 
+- name: Install Atom PPA (Ubuntu 18.04)
+  apt_repository:
+    repo: ppa:webupd8team/atom
+    state: present
+    update_cache: yes
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+
 - name: Install Atom
   apt: name=atom state=latest

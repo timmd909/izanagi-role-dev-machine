@@ -26,3 +26,6 @@
     - xfonts-base
     - xfonts-scalable
     - fonts-dejavu
+
+- name: Install Graphviz
+  apt: name=graphviz state=present

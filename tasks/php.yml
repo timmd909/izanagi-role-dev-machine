@@ -3,8 +3,11 @@
 - name: Install PHP dev package
   apt: name=php-dev state=latest
 
+- name: php-phpdbg
+  apt: name=php-phpdbg state=latest
+
 #
-# Ubuntu 16.04 specific
+# Ubuntu 16.04
 #
 
 - name: Remove Ubuntu's outdated xdebug
@@ -24,5 +27,9 @@
     path: /etc/php/7.0/mods-available/xdebug.ini
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
 
-- name: php-phpdbg
-  apt: name=php-phpdbg state=latest
+#
+# Ubuntu 18.04
+#
+- name: Install Composer
+  apt: name=composer state=present
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'

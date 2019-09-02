@@ -29,3 +29,12 @@
 
 - name: Install Graphviz
   apt: name=graphviz state=present
+
+- name: Install common build utils
+  apt: name="{{ item }}" state=latest
+  with_items:
+    - autoconf
+    - automake
+    - build-essential
+    - cmake
+    - make

@@ -15,7 +15,7 @@
     - oracle-java8-set-default
   when: ansible_distribution == 'Linux Mint' and ansible_distribution_version == '19'
 
-- name: "Install Oracle Java (Mint 19)"
+- name: "Install Oracle Java (Ubuntu 18.04)"
   apt: name={{ item }} state=latest update_cache=yes
   with_items:
     - oracle-java8-installer

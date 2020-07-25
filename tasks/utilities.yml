@@ -1,41 +1,53 @@
 ---
 
 - name: Install helpful utilities
-  apt: name="{{ item }}" state=present
-  with_items:
-    - bison
-    - cloc
-    - flex
-    - kdiff3
-    - nmap
-    - xvfb
+  apt:
+    pkg:
+      - bison
+      - cloc
+      - flex
+      - kdiff3
+      - nmap
+      - xvfb
 
 - name: Install Git related tools
-  apt: name="{{ item }}" state=present
-  with_items:
-    - giggle
-    - git
-    - git-cola
-    - gitg
+  apt:
+    pkg:
+      - giggle
+      - git
+      - git-cola
+      - gitg
 
 - name: Install fonts
-  apt: name="{{ item }}" state=latest
-  with_items:
-    - ttf-mscorefonts-installer
-    - ttf-xfree86-nonfree
-    - xfonts-base
-    - xfonts-scalable
-    - fonts-dejavu
+  apt:
+    pkg:
+      - ttf-mscorefonts-installer
+      - ttf-xfree86-nonfree
+      - xfonts-base
+      - xfonts-scalable
+      - fonts-dejavu
 
 - name: Install Graphviz
   apt: name=graphviz state=present
 
 - name: Install common build utils
-  apt: name="{{ item }}" state=latest
-  with_items:
-    - autoconf
-    - automake
-    - build-essential
-    - cmake
-    - kcachegrind
-    - make
+  apt:
+    pkg:
+      - autoconf
+      - automake
+      - build-essential
+      - cmake
+      - kcachegrind
+      - make
+
+- name: Install MySQL APT sources
+  apt:
+    deb: https://dev.mysql.com/get/mysql-apt-config_0.8.15-1_all.deb
+    state: present
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "20.04"
+
+- name: Install MySQL workbench
+  apt:
+    name: mysql-workbench-community
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "20.04"

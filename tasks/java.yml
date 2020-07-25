@@ -1,19 +1,23 @@
 ---
 
-- name: "Java : Install PPA (Ubuntu)"
+- name: "Java : Install PPA (Ubuntu 18.04)"
   apt_repository: repo=ppa:webupd8team/java
-  when: ansible_distribution == 'Ubuntu'
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
 
-- name: "Java : Install PPA (Mint)"
+- name: "Java : Install PPA (Mint 19)"
   apt_repository: repo=ppa:webupd8team/java codename=bionic
   when: ansible_distribution == 'Linux Mint' and ansible_distribution_version == '19'
 
-# https://coderwall.com/p/zzdapg/ansible-recipe-to-install-java-7-selecting-the-oracle-license
-- name: Automatically select the Oracle License
-  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
-
-- name: "Install Oracle Java"
+- name: "Install Oracle Java (Mint 19)"
   apt: name={{ item }} state=latest update_cache=yes
   with_items:
     - oracle-java8-installer
     - oracle-java8-set-default
+  when: ansible_distribution == 'Linux Mint' and ansible_distribution_version == '19'
+
+- name: "Install Oracle Java (Mint 19)"
+  apt: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - oracle-java8-installer
+    - oracle-java8-set-default
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'

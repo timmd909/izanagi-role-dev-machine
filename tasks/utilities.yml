@@ -2,7 +2,7 @@
 
 - name: Install helpful utilities
   apt:
-    pkg:
+    name:
       - bison
       - cloc
       - flex
@@ -12,7 +12,7 @@
 
 - name: Install Git related tools
   apt:
-    pkg:
+    name:
       - giggle
       - git
       - git-cola
@@ -20,19 +20,20 @@
 
 - name: Install fonts
   apt:
-    pkg:
+    name:
+      - fonts-dejavu
+      - fonts-ubuntu-font-family-console
       - ttf-mscorefonts-installer
       - ttf-xfree86-nonfree
       - xfonts-base
       - xfonts-scalable
-      - fonts-dejavu
 
 - name: Install Graphviz
   apt: name=graphviz state=present
 
 - name: Install common build utils
   apt:
-    pkg:
+    name:
       - autoconf
       - automake
       - build-essential

@@ -31,3 +31,7 @@
 - name: Install Vagrant (Ubuntu 18.04)
   apt: name=vagrant state=latest
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+
+- name: Install Vagrant (Ubuntu 20.04)
+  apt: name=vagrant state=latest
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'

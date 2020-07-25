@@ -37,4 +37,5 @@
     - automake
     - build-essential
     - cmake
+    - kcachegrind
     - make

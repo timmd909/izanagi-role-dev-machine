@@ -13,11 +13,6 @@
   become: yes
   become_user: root
 
-- include: google-chrome.yml
-  become: yes
-  become_user: root
-  when: ansible_distribution == 'Ubuntu' or ansible_distribution == 'Linux Mint'
-
 - include: java.yml
   become: yes
   become_user: root

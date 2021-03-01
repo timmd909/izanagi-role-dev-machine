@@ -20,4 +20,4 @@
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
 
 - name: Install Atom
-  apt: name=atom state=latest
+  apt: name=atom state=latest update_cache=yes

@@ -19,6 +19,10 @@
     update_cache: yes
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
 
+#
+# UBUNTU 20.04
+#
+
 - name: Install Atom repo key (Ubuntu 20.04)
   apt_key:
     url: https://packagecloud.io/AtomEditor/atom/gpgkey
@@ -30,6 +34,26 @@
     repo: deb https://packagecloud.io/AtomEditor/atom/any/ any main
     state: present
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
+
+#
+# UBUNTU 22.04
+#
+
+- name: Install Atom repo key (Ubuntu 20.04)
+  apt_key:
+    url: https://packagecloud.io/AtomEditor/atom/gpgkey
+    state: present
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '22.04'
+
+- name: Install Atom repo (Ubuntu 22.04)
+  apt_repository:
+    repo: deb https://packagecloud.io/AtomEditor/atom/any/ any main
+    state: present
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '22.04'
+
+#
+# COMMON
+#
 
 - name: Install Atom
   apt: name=atom state=latest update_cache=yes

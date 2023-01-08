@@ -22,11 +22,22 @@
   apt:
     name:
       - fonts-dejavu
-      - fonts-ubuntu-font-family-console
       - ttf-mscorefonts-installer
       - ttf-xfree86-nonfree
       - xfonts-base
       - xfonts-scalable
+
+- name: Install fonts (Ubuntu 20.04)
+  apt:
+    name:
+      - fonts-ubuntu-font-family-console
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "20.04"
+
+- name: Install fonts (Ubuntu 22.04)
+  apt:
+    name:
+      - fonts-ubuntu-console
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "22.04"
 
 - name: Install Graphviz
   apt: name=graphviz state=present

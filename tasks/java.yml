@@ -1,23 +1,9 @@
 ---
 
-- name: "Java : Install PPA (Ubuntu 18.04)"
-  apt_repository: repo=ppa:webupd8team/java
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+- name: 'Install Java JDK (Ubuntu 20.04)'
+  apt: name=openjdk-11-jdk
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
 
-- name: "Java : Install PPA (Mint 19)"
-  apt_repository: repo=ppa:webupd8team/java codename=bionic
-  when: ansible_distribution == 'Linux Mint' and ansible_distribution_version == '19'
-
-- name: "Install Oracle Java (Mint 19)"
-  apt: name={{ item }} state=latest update_cache=yes
-  with_items:
-    - oracle-java8-installer
-    - oracle-java8-set-default
-  when: ansible_distribution == 'Linux Mint' and ansible_distribution_version == '19'
-
-- name: "Install Oracle Java (Ubuntu 18.04)"
-  apt: name={{ item }} state=latest update_cache=yes
-  with_items:
-    - oracle-java8-installer
-    - oracle-java8-set-default
-  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+- name: 'Install Java JDK (Ubuntu 22.04)'
+  apt: name=openjdk-18-jdk
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '22.04'

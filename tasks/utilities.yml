@@ -22,6 +22,9 @@
   apt:
     name:
       - fonts-dejavu
+      - fonts-liberation
+      - fonts-noto
+      - fonts-roboto
       - ttf-mscorefonts-installer
       - ttf-xfree86-nonfree
       - xfonts-base

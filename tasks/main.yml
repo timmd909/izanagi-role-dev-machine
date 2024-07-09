@@ -1,24 +1,24 @@
 ---
 
-- include: atom-20.04.yml
+- import_tasks: atom-20.04.yml
   become: yes
   become_user: root
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '20.04'
 
-- include: atom-22.04.yml
+- import_tasks: atom-22.04.yml
   become: yes
   become_user: root
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '22.04'
 
-- include: automation.yml
+- import_tasks: automation.yml
   become: yes
   become_user: root
 
-- include: utilities.yml
+- import_tasks: utilities.yml
   become: yes
   become_user: root
 
-- include: java.yml
+- import_tasks: java.yml
   become: yes
   become_user: root
   when: ansible_distribution == 'Ubuntu'
